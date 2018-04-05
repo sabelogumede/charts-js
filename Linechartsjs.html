@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ChartsJs Line Chart</title>
+	<!--These are our ChartJS linked files -->
+	<script src="Chart.HorizontalBar.js"></script>
+	<script src="Chart.min.js"></script>
+	<script src="Chart.StackedBar.js"></script>
+
+	<!--These are our Styles/css linked files -->
+	<style>
+
+	    body{
+	    	background:green;
+	    }
+		canvas#linechart {
+			width: 600px;
+			height: 400px;
+		}
+		div#center{
+			text-align: center;
+		}
+
+	</style>
+
+
+</head>
+<body>
+   <div id="center">
+     <canvas id="linechart"></canvas>
+    </div>
+
+   <script>
+   // here we are creating a variable "Linechartdata" with the (Y-Axis) labels
+   	  var linechartdata = {
+	   	  	labels : ["2014","2015","2016","2017"],
+	   	  	//(X-Axis) labels
+	   	  	datasets : [
+	        {  
+	           label : "Green",
+	           strokeColor : "#fff",
+	           pointColor : "Green",
+               data : [150,200,250,150]
+	        },
+
+	        {   
+	           label : "Blue",
+	           strokeColor : "#fff",
+	           pointColor : "Blue",
+	           data : [200,175,150,200]
+	        }
+	   	  	]
+   	   }
+       //this is our new variable object that we want to use as part of draw on our "new chart"
+       // we get our objects property from (chartjs.org under line charts)
+       //this is for styling
+       var lineoptions = {
+       	    datasetFill : false,
+       	    pointDotRadius : 7,
+       	    pointDotStrokeWidth : 3,
+       	    datasetStrokeWidth : 5,
+       	    scaleShowGridLines : false,
+       	    //we got the following customization values from "chartsjs.org/gettingstated/globalchartconfiguration!
+       	    scaleLineColor : "#fff",
+       	    scaleLineWidth : 7,
+       	    scaleFontSize : 20,
+       	    scaleFontColor : "#fff" //no comma on the last value
+       }
+   	 // here we find the canvase by id "linechart" and "getcontext('2d')" draw on it!
+   	   var linechart = document.getElementById('linechart').getContext('2d');
+   	   //here we create a "new" Chart in the "canvase=id(linechart)".Line("Linechartdat, lineoptions) using a Line method parsing the "linechartdata" values and our variable object!
+   	   new Chart(linechart).Line(linechartdata, lineoptions);
+
+   </script>
+
+</body>
+</html>

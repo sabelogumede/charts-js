@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Horizontal Bar Chart</title>
+	<!--These are our ChartJS linked files -->
+	<script src="Chart.min.js"></script>
+	<script src="Chart.StackedBar.js"></script>
+	<!--The Horizontal bar script link should be last in the group -->
+	<script src="Chart.HorizontalBar.js"></script>
+
+	<style>
+		canvas#barchart {
+			width: 600px;
+			height: 400px;
+		}
+		div#center {
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="center">
+	 	<canvas id="barchart"></canvas>
+	</div>
+
+	<script>
+		var barchartdata ={
+			labels : ["January","February","March","April","May","June","July","August"],
+			datasets : [
+            {
+            	label : "Green",
+            	fillColor : "Green",
+            	strokeColor : "Green",
+            	data : [100,150,200,225,250,275,300,350]
+            },
+            {
+            	label : "Red",
+            	fillColor : "Red",
+            	strokeColor : "Red",
+            	data : [300,250,225,200,175,150,100,75]
+            }
+			]
+		}
+        //this is our advance command option that we add after creating the barChart {www.chartjs.org/chart options or global chart configuration}!!!
+        //this helps us style the chart further
+        //fonts size, stronger lines
+		var baroptions = {
+			//no spaces inbetween data sets
+			barDatasetSpacing : 0,
+			//stong black scale color
+			scaleLineColor : "#000",
+			//font size to 20px!
+			scaleFontSize : 20,
+			scaleFontColor : "#000",
+			//to hide the grid lines
+
+			/* showScale : false,
+			scaleShowGridLines : false */
+		}
+
+        //get element by Id in the html document "barchart"
+        //getContext('2d')= draw in the element!
+		var barchart = document.getElementById('barchart').getContext('2d');
+		//draw new 'barchart' using the '.Bar' comand using "barchartdata" elements
+		//add "baroptions to activate advanced commands"
+
+		/* To transform our barcharts to a HorizontalBar we just need to change the ".Bar" comand to ".HorizontalBar*/
+		new Chart(barchart).HorizontalBar(barchartdata, baroptions);
+	</script>
+</body>
+</html>

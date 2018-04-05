@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Radar Chart</title>
+	<!--These are our ChartJS linked files -->
+	<script src="Chart.HorizontalBar.js"></script>
+	<script src="Chart.min.js"></script>
+	<script src="Chart.StackedBar.js"></script>
+
+    <style>
+    	canvas#radarchart {
+    		width: 600px;
+    		height: 400px;
+    	}
+    	div#center {
+    		text-align: center;
+    	}
+    </style>
+
+</head>
+
+<body>
+<div id="center">
+  <canvas id="radarchart"></canvas>
+  </div>
+
+  <script>
+  	var radardata = {
+  		labels : ["Communication","IT","Marketing","Sales","Accounting","Human Resource"],
+  		datasets : [
+           {
+           	label : "Green",
+           	fillColor : "rgba(0,255,0,0.2)",
+           	strokeColor : "rgba(0,255,0,1)",
+           	pointColor : "rgba(0,255,0,1)",
+           	pointStrokeColor : "#fff",
+           	pointHighlightFill : "#fff",
+           	pointHighlightStroke : "rgba(0,255,0,1)",
+           	data : [5,3,2,4,5,9]
+           },
+           {
+
+           	label : "Red",
+           	fillColor : "rgba(255,0,0,0.2)",
+           	strokeColor : "rgba(255,0,0,1)",
+           	pointColor : "rgba(255,0,0,1)",
+           	pointStrokeColor : "#fff",
+           	pointHighlightFill : "#fff",
+           	pointHighlightStroke : "rgba(255,0,0,1)",
+           	data : [9,8,7,5,7,11]
+           }
+  		]
+  	}
+
+  var radaroptions = {
+  	angleLineColor : "#000",
+  	scaleLineColor : "#000",
+  	pointDotRadius : 5,
+  	pointDotStrokeWidth : 2,
+  	datasetStrokeWidth : 3,
+  	pointLabelFontSize : 20,
+  	pointLabelFontColor : "#000"
+
+  }	
+  
+  var radarchart = document.getElementById('radarchart').getContext('2d');
+  new Chart(radarchart).Radar(radardata, radaroptions);
+
+  </script>
+	
+</body>
+</html>
